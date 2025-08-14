@@ -33,7 +33,7 @@ The installation will automatically:
 ### Manual Installation
 
 ```bash
-git clone https://github.com/yourusername/gemini-cli-updater.git
+git clone https://github.com/0xRaghu/gemini-cli-updater.git
 cd gemini-cli-updater
 npm install
 npm link
@@ -216,7 +216,7 @@ npm uninstall -g gemini-cli-updater
 
 ### Setup Development Environment
 ```bash
-git clone https://github.com/yourusername/gemini-cli-updater.git
+git clone https://github.com/0xRaghu/gemini-cli-updater.git
 cd gemini-cli-updater
 npm install
 npm link
@@ -252,9 +252,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/gemini-cli-updater/issues)
-- **Documentation**: [GitHub Wiki](https://github.com/yourusername/gemini-cli-updater/wiki)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/gemini-cli-updater/discussions)
+- **Issues**: [GitHub Issues](https://github.com/0xRaghu/gemini-cli-updater/issues)
+- **Documentation**: [GitHub Wiki](https://github.com/0xRaghu/gemini-cli-updater/wiki)
+- **Discussions**: [GitHub Discussions](https://github.com/0xRaghu/gemini-cli-updater/discussions)
 
 ## Related Projects
 

@@ -20,7 +20,7 @@
     "google",
     "ai"
   ],
-  "author": "Your Name",
+  "author": "0xRaghu",
   "license": "MIT",
   "preferGlobal": true,
   "engines": {
@@ -33,10 +33,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/gemini-cli-updater.git"
+    "url": "git+https://github.com/0xRaghu/gemini-cli-updater.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/gemini-cli-updater/issues"
+    "url": "https://github.com/0xRaghu/gemini-cli-updater/issues"
   },
-  "homepage": "https://github.com/yourusername/gemini-cli-updater#readme"
+  "homepage": "https://github.com/0xRaghu/gemini-cli-updater#readme"
 }
