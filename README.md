@@ -200,16 +200,62 @@ alias gemini='gemini-cli-updater'
 
 ## Uninstallation
 
-### Standard Uninstall (Preserves User Data)
+### Method 1: Standard Uninstall (Recommended)
 ```bash
 npm uninstall -g gemini-cli-updater
 ```
+This automatically removes:
+- ✅ The npm package
+- ✅ Shell aliases 
+- ✅ Binary files (wrapper only, preserves real @google/gemini-cli)
+- ⚠️ Preserves user data (`~/.gemini-cli-updater/`)
 
-### Complete Removal
+### Method 2: Complete Cleanup (If Standard Fails)
+If the standard uninstall doesn't work completely, use our cleanup script:
+
 ```bash
-# Remove package and all user data
-npx gemini-cli-updater-uninstall --clean
-npm uninstall -g gemini-cli-updater
+# Download and run the cleanup script
+curl -L https://raw.githubusercontent.com/0xRaghu/gemini-cli-updater/main/scripts/cleanup.js -o cleanup.js
+node cleanup.js --clean
+
+# Or if you have the package locally
+npx gemini-cli-updater --cleanup --clean
+```
+
+### Method 3: Manual Cleanup
+If both methods fail, manual cleanup:
+
+```bash
+# 1. Force remove npm package
+npm uninstall -g gemini-cli-updater --force
+
+# 2. Remove wrapper binary files (preserve real @google/gemini-cli)
+# Check if ~/.nvm/versions/node/*/bin/gemini contains "gemini-cli-updater" and remove
+rm -f ~/.nvm/versions/node/*/bin/gemini-cli-updater
+
+# 3. Remove shell aliases
+# Edit ~/.bashrc, ~/.bash_profile, ~/.zshrc
+# Remove lines containing "gemini-cli-updater" or "alias gemini="
+
+# 4. Remove user data (optional)
+rm -rf ~/.gemini-cli-updater
+
+# 5. Restart terminal
+```
+
+**Important**: The real `@google/gemini-cli` package will be preserved during cleanup.
+
+### Verification
+After uninstallation, verify removal:
+```bash
+# Should show @google/gemini-cli version (not wrapper output)
+gemini --version
+
+# Should not list the wrapper package
+npm list -g gemini-cli-updater
+
+# Should still show the real Gemini CLI
+npm list -g @google/gemini-cli
 ```
 
 ## Development

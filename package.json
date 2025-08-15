@@ -1,6 +1,6 @@
 {
   "name": "gemini-cli-updater",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Auto-updater wrapper for Gemini CLI that checks for updates before execution",
   "main": "bin/gemini-cli-updater.js",
   "bin": {

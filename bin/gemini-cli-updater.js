@@ -51,10 +51,32 @@ class GeminiUpdaterCLI {
 
   async launchGemini(args) {
     return new Promise((resolve, reject) => {
-      // Try to find gemini in the system PATH
-      const gemini = spawn('gemini', args, {
+      // Find the actual @google/gemini-cli package and call it directly
+      const path = require('path');
+      let geminiPath;
+      
+      try {
+        // Use Node.js module resolution with global paths to find the package
+        const { execSync } = require('child_process');
+        const globalNodeModules = execSync('npm root -g', { encoding: 'utf8' }).trim();
+        const geminiPackagePath = path.join(globalNodeModules, '@google', 'gemini-cli');
+        const packageJsonPath = path.join(geminiPackagePath, 'package.json');
+        
+        if (!require('fs').existsSync(packageJsonPath)) {
+          throw new Error('Package not found in global modules');
+        }
+        
+        const packageJson = require(packageJsonPath);
+        geminiPath = path.join(geminiPackagePath, packageJson.bin.gemini);
+      } catch (error) {
+        this.logger.error('Could not find @google/gemini-cli package. Please install it first with: npm i -g @google/gemini-cli');
+        reject(new Error('Gemini CLI not found'));
+        return;
+      }
+
+      const gemini = spawn('node', [geminiPath, ...args], {
         stdio: 'inherit',
-        shell: true
+        shell: false
       });
 
       gemini.on('error', (error) => {
